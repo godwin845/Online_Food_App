@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,8 @@ import edu.onlineFoodApp.dto.User;
 import edu.onlineFoodApp.service.UserService;
 import edu.onlineFoodApp.util.ResponseStructure;
 
-
-
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
 	final static Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -46,8 +46,8 @@ public class UserController {
 	public ResponseEntity<ResponseStructure<User>> findById(@RequestParam long userId)
 	{
 		logger.info("Entering the User controller findById URL");
-		
-		ResponseEntity<ResponseStructure<User>> user	=userService.findById(userId);
+		 
+		ResponseEntity<ResponseStructure<User>> user = userService.findById(userId);
 		
 		logger.info("Exit the User controller findById URL");
 		

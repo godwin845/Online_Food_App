@@ -20,8 +20,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
@@ -50,4 +48,65 @@ public class User {
 	@OneToMany
 	private List<FoodOrders> foodOrders;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<FoodOrders> getFoodOrders() {
+		return foodOrders;
+	}
+
+	public void setFoodOrders(List<FoodOrders> foodOrders) {
+		this.foodOrders = foodOrders;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password="
+				+ password + ", role=" + role + ", foodOrders=" + foodOrders + "]";
+	}
 }

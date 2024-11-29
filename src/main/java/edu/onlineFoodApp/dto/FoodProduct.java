@@ -14,9 +14,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Setter
-@Getter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class FoodProduct {
@@ -38,4 +35,65 @@ public class FoodProduct {
     @Column(length = 3000)
     private String description;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public int getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(int availability) {
+		this.availability = availability;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "FoodProduct [id=" + id + ", name=" + name + ", totalPrice=" + totalPrice + ", discount=" + discount
+				+ ", availability=" + availability + ", type=" + type + ", description=" + description + "]";
+	}
 }
