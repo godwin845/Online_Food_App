@@ -43,7 +43,7 @@ public class UserController {
 	
 
 	@GetMapping("findById")
-	public ResponseEntity<ResponseStructure<User>> findById(@RequestParam long userId)
+	public ResponseEntity<ResponseStructure<User>> findById(@RequestParam Long userId)
 	{
 		logger.info("Entering the User controller findById URL");
 		 
@@ -68,7 +68,7 @@ public class UserController {
 	}
 	
 	@GetMapping("findByNumber")
-	public ResponseEntity<ResponseStructure<User>> findByNumber(@RequestParam long phoneNumber)
+	public ResponseEntity<ResponseStructure<User>> findByNumber(@RequestParam Long phoneNumber)
 	{
 		logger.info("Entering the User controller findByNumber URL");
 

@@ -35,7 +35,7 @@ public class FoodMenuService {
 	@Autowired
 	FoodProductDao foodProductDao;
 	
-	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(FoodMenu foodMenu, long userId)
+	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(FoodMenu foodMenu, Long userId)
 	{
 		Optional<User> user= userDao.findById(userId);
 		if(user.isPresent())
@@ -46,7 +46,7 @@ public class FoodMenuService {
 				FoodMenu menu=foodMenuDao.saveFoodMenu(foodMenu);
 				ResponseStructure<FoodMenu> responseStructure=new ResponseStructure<>();
 				responseStructure.setStatus(HttpStatus.CREATED.value());
-				responseStructure.setMessage("Menu Data saved sucessfully");
+				responseStructure.setMessage("Menu Data saved successfully");
 				responseStructure.setData(menu);
 				
 				ResponseEntity<ResponseStructure<FoodMenu>> responseEntity=new ResponseEntity<ResponseStructure<FoodMenu>>(responseStructure,HttpStatus.CREATED);
@@ -66,7 +66,7 @@ public class FoodMenuService {
 		if(menu.isPresent()) {
 		ResponseStructure<FoodMenu> responseStructure=new ResponseStructure<>();
 		responseStructure.setStatus(HttpStatus.OK.value());
-		responseStructure.setMessage("Menu Data retrived sucessfully");
+		responseStructure.setMessage("Menu Data retrieved successfully");
 		responseStructure.setData(menu.get());
 		
 		ResponseEntity<ResponseStructure<FoodMenu>> responseEntity=new ResponseEntity<ResponseStructure<FoodMenu>>(responseStructure,HttpStatus.OK);
@@ -84,7 +84,7 @@ public class FoodMenuService {
 		if(menu!=null) {
 		ResponseStructure<List<FoodMenu>> responseStructure=new ResponseStructure<>();
 		responseStructure.setStatus(HttpStatus.OK.value());
-		responseStructure.setMessage("Menu Data saved sucessfully");
+		responseStructure.setMessage("Menu Data saved successfully");
 		responseStructure.setData(menu);
 		
 		ResponseEntity<ResponseStructure<List<FoodMenu>>> responseEntity=new ResponseEntity<ResponseStructure<List<FoodMenu>>>(responseStructure, HttpStatus.OK);
@@ -105,7 +105,7 @@ public class FoodMenuService {
 				{
 					ResponseStructure<String>  responseStructure=new ResponseStructure<>();
 					responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
-					responseStructure.setMessage("Menu removed Sucessfully");
+					responseStructure.setMessage("Menu removed Successfully");
 					responseStructure.setData(str);
 					
 					ResponseEntity<ResponseStructure<String>> responseEntity=new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.NO_CONTENT);
@@ -119,7 +119,7 @@ public class FoodMenuService {
 		}
 	}
 	
-	public ResponseEntity<ResponseStructure<FoodMenu>> updateFoodMenu(long foodMenuId,FoodMenu foodMenu)
+	public ResponseEntity<ResponseStructure<FoodMenu>> updateFoodMenu(Long foodMenuId,FoodMenu foodMenu)
 	{
 		Optional<FoodMenu> optional=foodMenuDao.findFoodMenuById(foodMenuId);
 		
@@ -128,7 +128,7 @@ public class FoodMenuService {
 			foodMenu.setId(foodMenuId);
 			ResponseStructure<FoodMenu>  responseStructure=new ResponseStructure<>();
 			responseStructure.setStatus(HttpStatus.OK.value());
-			responseStructure.setMessage("Menu Updated Sucessfully");
+			responseStructure.setMessage("Menu Updated Successfully");
 			responseStructure.setData(foodMenu);
 			
 			ResponseEntity<ResponseStructure<FoodMenu>> responseEntity=new ResponseEntity<ResponseStructure<FoodMenu>>(responseStructure, HttpStatus.OK);
@@ -141,7 +141,7 @@ public class FoodMenuService {
 	
 
 	
-	public ResponseEntity<ResponseStructure<List<FoodMenu>>>  updateFoodProduct(long staffId)
+	public ResponseEntity<ResponseStructure<List<FoodMenu>>>  updateFoodProduct(Long staffId)
 	{
 		
 		

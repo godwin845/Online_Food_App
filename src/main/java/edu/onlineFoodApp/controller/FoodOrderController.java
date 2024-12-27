@@ -32,7 +32,7 @@ public class FoodOrderController {
 	}
 	
 	@GetMapping("findFoodOrderByID")
-	public ResponseEntity<ResponseStructure<FoodOrders>> findFoodOrderByID(@RequestParam long foodOrderId)
+	public ResponseEntity<ResponseStructure<FoodOrders>> findFoodOrderByID(@RequestParam Long foodOrderId)
 	{
 		return foodOrderService.findFoodOrderByID(foodOrderId);
 	}
@@ -47,7 +47,7 @@ public class FoodOrderController {
 	
 	
 	@DeleteMapping("deleteFoodOrderByID")
-	public ResponseEntity<ResponseStructure<String>> removeFoodOrderById(@RequestParam long foodOrderId)
+	public ResponseEntity<ResponseStructure<String>> removeFoodOrderById(@RequestParam Long foodOrderId)
 	{
 		return foodOrderService.removeFoodOrderById(foodOrderId);
 	}

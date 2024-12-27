@@ -34,7 +34,7 @@ public class CustomerService {
 				
 	}
 	
-	public ResponseEntity<ResponseStructure<Customer>> findCustomerById(long customerId) {
+	public ResponseEntity<ResponseStructure<Customer>> findCustomerById(Long customerId) {
 		
 		Optional<Customer> customer = customerDao.findCustomerById(customerId);
 		
@@ -57,7 +57,7 @@ public class CustomerService {
 	
 	}
 	
-	public ResponseEntity<ResponseStructure<Customer>> findCustomerByPhoneNumber1(long customerPhoneNumber) {
+	public ResponseEntity<ResponseStructure<Customer>> findCustomerByPhoneNumber1(Long customerPhoneNumber) {
 		
 		Optional<Customer> optional = customerDao.findCustomerByPhoneNumber(customerPhoneNumber);
 		
@@ -107,7 +107,7 @@ public class CustomerService {
 		}
 			
 			
-			public ResponseEntity<ResponseStructure<Customer>> UpdateCustomer(long customerId, Customer customer) {
+			public ResponseEntity<ResponseStructure<Customer>> UpdateCustomer(Long customerId, Customer customer) {
 				
 				Optional<Customer> optionalCustomer = customerDao.findCustomerById(customerId);
 				
@@ -135,7 +135,7 @@ public class CustomerService {
 			}
 				
 		
-				public ResponseEntity<ResponseStructure<Customer>> removeCustomer(long customerId) {
+				public ResponseEntity<ResponseStructure<Customer>> removeCustomer(Long customerId) {
 					
 					Optional<Customer> CustomerOptional = customerDao.findCustomerById(customerId);
 					

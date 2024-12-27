@@ -21,7 +21,7 @@ public class FoodOrderDao {
 		return foodOrderRepository.save(foodOrders);
 	}
 
-	public Optional<FoodOrders> findFoodOrderById(long id) {
+	public Optional<FoodOrders> findFoodOrderById(Long id) {
 		
 		Optional<FoodOrders> foodOrders = foodOrderRepository.findById(id);
 		
@@ -41,7 +41,7 @@ public class FoodOrderDao {
 		
 	}
 	
-	public String removeFoodOrderById(long id) {
+	public String removeFoodOrderById(Long id) {
 		
 		foodOrderRepository.deleteById(id);
 		
@@ -50,7 +50,6 @@ public class FoodOrderDao {
 	}
 
 	public List<FoodOrders> findAllFoodOrders() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

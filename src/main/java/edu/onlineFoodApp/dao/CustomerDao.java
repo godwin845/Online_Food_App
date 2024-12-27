@@ -23,7 +23,7 @@ public class CustomerDao {
 	}
 	
 
-	public Optional<Customer> findCustomerById(long customerId) {
+	public Optional<Customer> findCustomerById(Long customerId) {
 		
 		Optional<Customer> cusOptional = customerRepository.findById(customerId);
 		
@@ -31,7 +31,7 @@ public class CustomerDao {
 		
 	}
 	
-	public Optional<Customer> findCustomerByPhoneNumber(long customerPhoneNumber) {
+	public Optional<Customer> findCustomerByPhoneNumber(Long customerPhoneNumber) {
 		
 		Customer customer = customerRepository.findByPhoneNumber(customerPhoneNumber);
 		
@@ -55,7 +55,7 @@ public class CustomerDao {
 		
 	}
 	
-	public String removeCustomer(long customerId) {
+	public String removeCustomer(Long customerId) {
 		
 		customerRepository.deleteById(customerId);
 		

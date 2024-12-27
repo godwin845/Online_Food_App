@@ -27,7 +27,7 @@ public class FoodMenuController {
 	FoodMenuService foodMenuService;
 	
 	@PostMapping("saveFoodMenu")
-	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(@RequestBody FoodMenu foodMenu,@RequestParam long userID)
+	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(@RequestBody FoodMenu foodMenu,@RequestParam Long userID)
 	{
 		return foodMenuService.saveFoodMenu(foodMenu,userID);
 	}
@@ -49,13 +49,13 @@ public class FoodMenuController {
 	}
 	
 	@PutMapping("updateFoodMenu")
-	public ResponseEntity<ResponseStructure<FoodMenu>> updateFoodMenu(@RequestParam long foodMenuId,@RequestBody FoodMenu foodMenu)
+	public ResponseEntity<ResponseStructure<FoodMenu>> updateFoodMenu(@RequestParam Long foodMenuId,@RequestBody FoodMenu foodMenu)
 	{
 		return foodMenuService.updateFoodMenu(foodMenuId, foodMenu);
 	}
 
 	@PutMapping("updateFoodMenuByStaff")
-	public ResponseEntity<ResponseStructure<List<FoodMenu>>> updateFoodMenuByStaff(@RequestParam long staffId)
+	public ResponseEntity<ResponseStructure<List<FoodMenu>>> updateFoodMenuByStaff(@RequestParam Long staffId)
 	{
 		return foodMenuService.updateFoodProduct(staffId);
 	}

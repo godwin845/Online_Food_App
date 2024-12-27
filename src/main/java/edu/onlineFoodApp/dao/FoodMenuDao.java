@@ -21,7 +21,7 @@ public class FoodMenuDao {
 		
 	}
 	
-	public Optional<FoodMenu> findFoodMenuById(long foodMenuId) {
+	public Optional<FoodMenu> findFoodMenuById(Long foodMenuId) {
 		
 		Optional<FoodMenu> opt = foodMenuRepository.findById(foodMenuId);
 		
@@ -35,7 +35,7 @@ public class FoodMenuDao {
 		
 	}
 	
-	public String removeFoodMenuById(long foodMenuById) {
+	public String removeFoodMenuById(Long foodMenuById) {
 		
 		foodMenuRepository.deleteById(foodMenuById);
 		

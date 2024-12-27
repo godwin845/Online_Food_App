@@ -47,7 +47,7 @@ public class FoodProductService {
 			throw new NoSuchDataFoundException();
 	}
 	
-	public ResponseEntity<ResponseStructure<FoodProduct>> findFoodProductByID(long id) {
+	public ResponseEntity<ResponseStructure<FoodProduct>> findFoodProductByID(Long id) {
 		Optional<FoodProduct> foodProduct=foodProductDao.findFoodProductById(id);
 		if(foodProduct.isPresent())
 		{
@@ -81,7 +81,7 @@ public class FoodProductService {
 			throw new NoSuchDataFoundException();
 	}
 	
-	public ResponseEntity<ResponseStructure<String>> removeFoodProductById(long id)
+	public ResponseEntity<ResponseStructure<String>> removeFoodProductById(Long id)
 	{
 		Optional<FoodProduct> foodProduct=foodProductDao.findFoodProductById(id);
 		if(foodProduct.isPresent())

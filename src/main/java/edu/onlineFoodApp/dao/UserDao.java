@@ -81,7 +81,7 @@ public class UserDao {
 		
 	}
 	
-	public String removeUser(long id) {
+	public String removeUser(Long id) {
 		
 		logger.info("Entering the User DAO class in removeUser(long id) Method");
 		
@@ -94,7 +94,6 @@ public class UserDao {
 	}
 
 	public Optional<User> findByEmail(String email) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -21,7 +21,7 @@ public class FoodItemDao {
 		
 	}
 	
-	public Optional<FoodItems> findFoodItemById(long foodItemId) {
+	public Optional<FoodItems> findFoodItemById(Long foodItemId) {
 		
 		Optional<FoodItems> foodItems = foodItemRepository.findById(foodItemId);
 		
@@ -45,8 +45,7 @@ public class FoodItemDao {
 		
 	}
 
-	public Optional<FoodItems> findCustomerById(long foodItemId) {
-		// TODO Auto-generated method stub
+	public Optional<FoodItems> findCustomerById(Long foodItemId) {
 		return null;
 	}
 

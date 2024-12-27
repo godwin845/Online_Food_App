@@ -87,7 +87,7 @@ public class UserService {
 			throw new InvalidEmailIdNotPresentException();
 	}
 
-	public ResponseEntity<ResponseStructure<User>> findById(long userId)
+	public ResponseEntity<ResponseStructure<User>> findById(Long userId)
 	{
 		logger.info("Entering the User Service class in findById(long userId) Method");
 
@@ -111,7 +111,7 @@ public class UserService {
 	}
 	
 	
-	public ResponseEntity<ResponseStructure<User>> findByNumber(long phoneNumber)
+	public ResponseEntity<ResponseStructure<User>> findByNumber(Long phoneNumber)
 	{
 		logger.info("Entering the User Service class in findByNumber(long phoneNumber) Method");
 

@@ -11,19 +11,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class FoodMenu {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Enumerated(EnumType.STRING)
 	private Dishes dishes;
@@ -31,32 +30,4 @@ public class FoodMenu {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<FoodProduct> foodProducts;
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Dishes getDishes() {
-		return dishes;
-	}
-
-	public void setDishes(Dishes dishes) {
-		this.dishes = dishes;
-	}
-
-	public List<FoodProduct> getFoodProducts() {
-		return foodProducts;
-	}
-
-	public void setFoodProducts(List<FoodProduct> foodProducts) {
-		this.foodProducts = foodProducts;
-	}
-
-	@Override
-	public String toString() {
-		return "FoodMenu [id=" + id + ", dishes=" + dishes + ", foodProducts=" + foodProducts + "]";
-	}
 }

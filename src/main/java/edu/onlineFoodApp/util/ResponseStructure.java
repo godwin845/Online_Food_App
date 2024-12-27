@@ -1,44 +1,12 @@
 package edu.onlineFoodApp.util;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-import org.springframework.http.ResponseEntity;
-
-import edu.onlineFoodApp.dto.FoodOrders;
-
+@Getter
+@Setter
 public class ResponseStructure<T> {
-	
-	private int status;
-	private String message;
-	private T data;
-	
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public void setData(T data) {
-		this.data = data;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public T getData() {
-		return data;
-	}
-
-	public void setData(ResponseEntity<ResponseStructure<List<FoodOrders>>> findAllFoodOrders) {
-		
-	}
-
-	
+    private int status;
+    private String message;
+    private T data;
 }

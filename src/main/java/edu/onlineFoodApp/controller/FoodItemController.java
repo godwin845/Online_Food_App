@@ -30,13 +30,13 @@ public class FoodItemController {
 	}
 	
 	@GetMapping("findFoodItemById")
-	public ResponseEntity<ResponseStructure<FoodItems>> saveFoodItem(@RequestParam long foodItemId)
+	public ResponseEntity<ResponseStructure<FoodItems>> saveFoodItem(@RequestParam Long foodItemId)
 	{
 		return foodItemService.findFoodItemById(foodItemId);
 	}
 	
 	@DeleteMapping("deleteFoodItemById")
-	public ResponseEntity<ResponseStructure<String>> deleteFoodItem(@RequestParam long foodItemsId)
+	public ResponseEntity<ResponseStructure<String>> deleteFoodItem(@RequestParam Long foodItemsId)
 	{
 		return foodItemService.deleteFoodItem(foodItemsId);
 	}

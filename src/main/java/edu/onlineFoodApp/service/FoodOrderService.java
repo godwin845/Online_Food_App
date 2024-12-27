@@ -37,7 +37,7 @@ public class FoodOrderService {
 	@Autowired
 	FoodProductDao foodProductDao;
 	
-	public ResponseEntity<ResponseStructure<FoodOrders>> saveFoodOrder(FoodOrders foodOrders,long customerId)
+	public ResponseEntity<ResponseStructure<FoodOrders>> saveFoodOrder(FoodOrders foodOrders,Long customerId)
 	{
 		Optional<Customer> customer=customerDao.findCustomerById(customerId);
 		
@@ -76,7 +76,7 @@ public class FoodOrderService {
 			FoodOrders orders =	foodOrderDao.saveFoodOrder(foodOrders);
 			ResponseStructure<FoodOrders> responseStructure=new ResponseStructure<>();
 			responseStructure.setStatus(HttpStatus.CREATED.value());
-			responseStructure.setMessage("Order Placed sucessfully");				
+			responseStructure.setMessage("Order Placed successfully");				
 			responseStructure.setData(orders);
 			
 			ResponseEntity<ResponseStructure<FoodOrders>> entity=new ResponseEntity<ResponseStructure<FoodOrders>>(responseStructure, HttpStatus.CREATED);
@@ -88,13 +88,13 @@ public class FoodOrderService {
 	
 	}
 	
-	public ResponseEntity<ResponseStructure<FoodOrders>> findFoodOrderByID(long id) {
+	public ResponseEntity<ResponseStructure<FoodOrders>> findFoodOrderByID(Long id) {
 		Optional<FoodOrders> foodOrders=foodOrderDao.findFoodOrderById(id);
 		if(foodOrders.isPresent())
 		{
 			ResponseStructure<FoodOrders> responseStructure=new ResponseStructure<>();
 			responseStructure.setStatus(HttpStatus.OK.value());
-			responseStructure.setMessage("Food Order founded sucessfully.");
+			responseStructure.setMessage("Food Order founded successfully.");
 			responseStructure.setData(foodOrders.get());
 			
 			ResponseEntity<ResponseStructure<FoodOrders>> responseEntity=new ResponseEntity<ResponseStructure<FoodOrders>>(responseStructure, HttpStatus.OK);
@@ -112,8 +112,8 @@ public class FoodOrderService {
 		{
 		ResponseStructure<List<FoodOrders>> responseStructure=new ResponseStructure<>();
 		responseStructure.setStatus(HttpStatus.OK.value());
-		responseStructure.setMessage("Data Save Sucessfull");
-		responseStructure.setData(findAllFoodOrders());
+		responseStructure.setMessage("Data Save Successfully");
+		responseStructure.setData(foodOrders);
 		
 		ResponseEntity<ResponseStructure<List<FoodOrders>>> responseEntity=new ResponseEntity<ResponseStructure<List<FoodOrders>>>(responseStructure, HttpStatus.OK);
 		
@@ -123,7 +123,7 @@ public class FoodOrderService {
 			throw new NoSuchDataFoundException();
 	}
 	
-	public ResponseEntity<ResponseStructure<String>> removeFoodOrderById(long id)
+	public ResponseEntity<ResponseStructure<String>> removeFoodOrderById(Long id)
 	{
 		Optional<FoodOrders> foodOrders=foodOrderDao.findFoodOrderById(id);
 		if(foodOrders.isPresent())
@@ -131,7 +131,7 @@ public class FoodOrderService {
 			String str=foodOrderDao.removeFoodOrderById(id);	
 			ResponseStructure<String> responseStructure=new ResponseStructure<>();
 			responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
-			responseStructure.setMessage("Food Order deliverd sucessfully.");		
+			responseStructure.setMessage("Food Order delivered successfully.");		
 			responseStructure.setData(str);
 			
 			ResponseEntity<ResponseStructure<String>> responseEntity=new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.OK);

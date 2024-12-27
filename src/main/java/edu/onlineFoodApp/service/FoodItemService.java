@@ -19,7 +19,7 @@ public class FoodItemService {
 	@Autowired
 	FoodItemDao foodItemDao;
 	
-	public ResponseEntity<ResponseStructure<FoodItems>> saveFoodItem(FoodItems foodItems,long id)
+	public ResponseEntity<ResponseStructure<FoodItems>> saveFoodItem(FoodItems foodItems,Long id)
 	{	
 		ResponseStructure<FoodItems> responseStructure=new ResponseStructure<>();
 		
@@ -32,7 +32,7 @@ public class FoodItemService {
 	}
 
 	
-	public ResponseEntity<ResponseStructure<FoodItems>> findFoodItemById(long foodItemId)
+	public ResponseEntity<ResponseStructure<FoodItems>> findFoodItemById(Long foodItemId)
 	{
 		Optional<FoodItems> foodItems=foodItemDao.findFoodItemById(foodItemId);
 		if(foodItems.isPresent()) {
@@ -72,7 +72,7 @@ public class FoodItemService {
 	
 	
 	
-	public ResponseEntity<ResponseStructure<String>> deleteFoodItem(long foodItemId)
+	public ResponseEntity<ResponseStructure<String>> deleteFoodItem(Long foodItemId)
 	{
 		Optional<FoodItems> optional=foodItemDao.findFoodItemById(foodItemId);
 		if(optional.isPresent())

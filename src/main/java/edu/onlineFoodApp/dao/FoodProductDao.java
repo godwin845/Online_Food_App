@@ -19,7 +19,7 @@ public class FoodProductDao {
         return foodProductRepository.save(foodProduct);
     }
 
-    public Optional<FoodProduct> findFoodProductById(long id) {
+    public Optional<FoodProduct> findFoodProductById(Long id) {
         return foodProductRepository.findById(id);
     }
 
@@ -44,7 +44,7 @@ public class FoodProductDao {
         return foodProductRepository.save(foodProduct);
     }
 
-    public List<FoodProduct> findFoodProductsByStaff(long userId) {
+    public List<FoodProduct> findFoodProductsByStaff(Long userId) {
         return foodProductRepository.findAll();
     }
 
