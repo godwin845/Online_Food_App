@@ -7,5 +7,4 @@ public enum Role {
 	STAFF,
 	CHEF,
 	CUSTOMER;
-
 }

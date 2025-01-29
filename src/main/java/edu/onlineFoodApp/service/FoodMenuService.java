@@ -35,16 +35,21 @@ public class FoodMenuService {
 	@Autowired
 	FoodProductDao foodProductDao;
 	
-	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(FoodMenu foodMenu, long userId)
-	{
+	
+	public ResponseEntity<ResponseStructure<FoodMenu>> saveFoodMenu(FoodMenu foodMenu, long userId) {
+		
 		Optional<User> user= userDao.findById(userId);
-		if(user.isPresent())
-		{
+		
+		if(user.isPresent()) {
+			
 			Role role=user.get().getRole();
-			if(role.equals(Role.ADMIN) || role.equals(Role.MANAGER))
-			{
+			
+			if(role.equals(Role.ADMIN) || role.equals(Role.MANAGER)) {
+				
 				FoodMenu menu=foodMenuDao.saveFoodMenu(foodMenu);
+				
 				ResponseStructure<FoodMenu> responseStructure=new ResponseStructure<>();
+				
 				responseStructure.setStatus(HttpStatus.CREATED.value());
 				responseStructure.setMessage("Menu Data saved sucessfully");
 				responseStructure.setData(menu);
@@ -52,19 +57,24 @@ public class FoodMenuService {
 				ResponseEntity<ResponseStructure<FoodMenu>> responseEntity=new ResponseEntity<ResponseStructure<FoodMenu>>(responseStructure,HttpStatus.CREATED);
 
 				return responseEntity;
-			}
-			else
+				
+			} else
+				
 				throw new UserRoleDoesNotMatch();
-		}
-		else
+		} else
+			
 			throw new UserDataNotFoundInTheDatabase();
 	}
 	
-	public ResponseEntity<ResponseStructure<FoodMenu>> findFoodMenuById(Long id)
-	{
+	
+	public ResponseEntity<ResponseStructure<FoodMenu>> findFoodMenuById(Long id) {
+		
 		Optional<FoodMenu> menu=foodMenuDao.findFoodMenuById(id);
+		
 		if(menu.isPresent()) {
+			
 		ResponseStructure<FoodMenu> responseStructure=new ResponseStructure<>();
+		
 		responseStructure.setStatus(HttpStatus.OK.value());
 		responseStructure.setMessage("Menu Data retrived sucessfully");
 		responseStructure.setData(menu.get());
@@ -72,14 +82,15 @@ public class FoodMenuService {
 		ResponseEntity<ResponseStructure<FoodMenu>> responseEntity=new ResponseEntity<ResponseStructure<FoodMenu>>(responseStructure,HttpStatus.OK);
 
 		return responseEntity;
-		}
-		else
+		
+		} else
+			
 			throw new NoSuchDataFoundException();
 	}
 	
 	
-	public ResponseEntity<ResponseStructure<List<FoodMenu>>> findAllFoodMenu()
-	{
+	public ResponseEntity<ResponseStructure<List<FoodMenu>>> findAllFoodMenu() {
+		
 		List<FoodMenu> menu=foodMenuDao.findAllFoodMenu();
 		if(menu!=null) {
 		ResponseStructure<List<FoodMenu>> responseStructure=new ResponseStructure<>();
@@ -90,60 +101,69 @@ public class FoodMenuService {
 		ResponseEntity<ResponseStructure<List<FoodMenu>>> responseEntity=new ResponseEntity<ResponseStructure<List<FoodMenu>>>(responseStructure, HttpStatus.OK);
 
 		return responseEntity;
-		}
-		else
+		
+		} else
+			
 			throw new NoSuchDataFoundException();
 	}
+	
 		
-	public ResponseEntity<ResponseStructure<String>> removeById(Long id)
-	{
+	public ResponseEntity<ResponseStructure<String>> removeById(Long id) {
+		
 		Optional<FoodMenu> foodMenu=foodMenuDao.findFoodMenuById(id);
 		
 		if(foodMenu.isPresent()) {
+			
 					String str=foodMenuDao.removeFoodMenuById(id);
-				if(str!=null)
-				{
+					
+				if(str!=null) {
+					
 					ResponseStructure<String>  responseStructure=new ResponseStructure<>();
+					
 					responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
 					responseStructure.setMessage("Menu removed Sucessfully");
 					responseStructure.setData(str);
 					
 					ResponseEntity<ResponseStructure<String>> responseEntity=new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.NO_CONTENT);
+					
 					return responseEntity;
-				}
-				else
+					
+				} else
+					
 					throw new NoSuchDataFoundException();
 				}
 		else {
+			
 			throw new NoSuchDataFoundException();
 		}
 	}
 	
-	public ResponseEntity<ResponseStructure<FoodMenu>> updateFoodMenu(long foodMenuId,FoodMenu foodMenu)
-	{
+	
+	public ResponseEntity<ResponseStructure<FoodMenu>> updateFoodMenu(long foodMenuId,FoodMenu foodMenu) {
+		
 		Optional<FoodMenu> optional=foodMenuDao.findFoodMenuById(foodMenuId);
 		
-		if(optional.isPresent())
-		{
+		if(optional.isPresent()) {
+			
 			foodMenu.setId(foodMenuId);
+			
 			ResponseStructure<FoodMenu>  responseStructure=new ResponseStructure<>();
+			
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("Menu Updated Sucessfully");
 			responseStructure.setData(foodMenu);
 			
 			ResponseEntity<ResponseStructure<FoodMenu>> responseEntity=new ResponseEntity<ResponseStructure<FoodMenu>>(responseStructure, HttpStatus.OK);
+			
 			return responseEntity;
 	
-		}
-		else
+		} else
+			
 			throw new FoodMenuIdNotPresentException();
 	}
 	
 
-	
-	public ResponseEntity<ResponseStructure<List<FoodMenu>>>  updateFoodProduct(long staffId)
-	{
-		
+	public ResponseEntity<ResponseStructure<List<FoodMenu>>>  updateFoodProduct(long staffId) {
 		
 		Optional<User> user=userDao.findById(staffId);
 		
@@ -155,21 +175,24 @@ public class FoodMenuService {
 		List<FoodMenu> updateFoodMenu = new ArrayList<FoodMenu>();
 		
 		
-		if(user.isPresent() && user.get().getRole().equals(Role.STAFF))
-		{
-			for(FoodMenu menu:foodMenus)
-			{
+		if(user.isPresent() && user.get().getRole().equals(Role.STAFF)) {
+			
+			for(FoodMenu menu:foodMenus) {
+				
 				List<FoodProduct> oldFoodProduct=menu.getFoodProducts();
+				
 				List<FoodProduct> newFoodProduct=new ArrayList<FoodProduct>();
+				
 				FoodMenu menu2=new FoodMenu();
 				
 				menu2.setDishes(menu.getDishes());
 				menu2.setId(menu.getId());
 				menu2.setFoodProducts(newFoodProduct);
 				
-				for(FoodProduct foodProductUpdate:oldFoodProduct )
-				{	
+				for(FoodProduct foodProductUpdate:oldFoodProduct ) {	
+					
 						FoodProduct foodProduct=new FoodProduct();
+						
 						foodProduct.setAvailability(foodProductUpdate.getAvailability());
 						foodProduct.setDescription(foodProductUpdate.getDescription());	
 						foodProduct.setDiscount(foodProductUpdate.getDiscount());
@@ -178,23 +201,22 @@ public class FoodMenuService {
 						foodProduct.setTotalPrice(foodProductUpdate.getTotalPrice());
 						foodProduct.setType(foodProductUpdate.getType());
 						
+						newFoodProduct.add(foodProduct);							
 						
-						newFoodProduct.add(foodProduct);
-												
+					for(FoodOrders foodOrders:orders) {
 						
-					for(FoodOrders foodOrders:orders)
-					{
 							List<FoodItems> foodItems=	foodOrders.getFoodItems();
-						for(FoodItems foodItems2:foodItems)
-						{
+							
+						for(FoodItems foodItems2:foodItems) {
 						
-							if(foodItems2.getName().equals(foodProductUpdate.getName()))
-							{
+							if(foodItems2.getName().equals(foodProductUpdate.getName())) {
+								
 								int foodItemQuantity=foodItems2.getQuantity();
 								int foodProductQuantity=foodProductUpdate.getAvailability();
 								int foodProductavalability=foodProductQuantity-foodItemQuantity;
-								if(foodProductavalability>=1) 
-								{
+								
+								if(foodProductavalability>=1) {
+									
 									foodProduct.setAvailability(foodProductavalability);
 									foodProduct.setDescription(foodProductUpdate.getDescription());	
 									foodProduct.setDiscount(foodProductUpdate.getDiscount());
@@ -204,18 +226,20 @@ public class FoodMenuService {
 									foodProduct.setType(foodProductUpdate.getType());
 									
 									newFoodProduct.add(foodProduct);
-								}
-								else
+									
+								} else
+									
 									foodProductDao.removeFoodProductById(foodProductUpdate.getId());
 							}			
 						}
 					}		
 				}
-				updateFoodMenu.add(menu2);
 				
+				updateFoodMenu.add(menu2);
 			}
 			
 			ResponseStructure<List<FoodMenu>> responseStructure=new ResponseStructure<>();
+			
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("New Food Menu Updated ");
 			responseStructure.setData(updateFoodMenu);
@@ -223,11 +247,9 @@ public class FoodMenuService {
 			ResponseEntity<ResponseStructure<List<FoodMenu>>> entity=new ResponseEntity<ResponseStructure<List<FoodMenu>>>(responseStructure, HttpStatus.OK);
 
 			return entity;
-		}
-		else 
+			
+		} else 
+			
 			throw new UserDataNotFoundInTheDatabase();
 	}
-
-
 }
-

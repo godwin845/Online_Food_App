@@ -6,7 +6,5 @@ import edu.onlineFoodApp.dto.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	
-	
 	public Customer findByPhoneNumber(long phoneNumber);
-
 }

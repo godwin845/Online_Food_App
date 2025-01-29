@@ -29,8 +29,8 @@ public class UserDao {
 		logger.info("Existing the user DAO class in saveUser(User user) Method");
 		
 		return user2;
-		
 	}
+	
 	
 	public Optional<User> findById(Long userId) {
 		
@@ -41,7 +41,6 @@ public class UserDao {
 		logger.info("exiting the user DAO class in findById(long userId) Method");
 		
 		return u;
-		
 	}
 	
 
@@ -54,8 +53,8 @@ public class UserDao {
 		logger.info("exiting the user DAO class in findByNumber(Long phoneNumber) Method");
 		
 		return Optional.ofNullable(u);
-		
 	}
+	
 	
 	public List<User> findAllUser() {
 		
@@ -66,8 +65,8 @@ public class UserDao {
 		logger.info("exiting the user DAO class in findAllUser() Method");
 		
 		return list;
-		
 	}
+	
 	
 	public User updateUser(User user) {
 		
@@ -77,9 +76,9 @@ public class UserDao {
 		
 		logger.info("exiting the user DAO class in updateUser(User user) Method");
 		
-		return userUpdate;
-		
+		return userUpdate;	
 	}
+	
 	
 	public String removeUser(long id) {
 		
@@ -90,11 +89,11 @@ public class UserDao {
 		logger.info("Exiting the User DAO class in removeUser(long id) Method");
 		
 		return "User details removed";
-		
 	}
+	
 
 	public Optional<User> findByEmail(String email) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 }

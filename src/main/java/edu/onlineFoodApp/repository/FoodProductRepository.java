@@ -10,6 +10,6 @@ import edu.onlineFoodApp.dto.FoodProduct;
 public interface FoodProductRepository extends JpaRepository<FoodProduct, Long>{
 	
 	public FoodProduct findByName(String name);
+	
 	public List<FoodProduct> findAllByType(String type);
-
 }

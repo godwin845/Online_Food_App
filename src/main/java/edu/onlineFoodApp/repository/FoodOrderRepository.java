@@ -6,5 +6,4 @@ import edu.onlineFoodApp.dto.FoodOrders;
 
 public interface FoodOrderRepository extends JpaRepository<FoodOrders, Long>{
 	
-
 }

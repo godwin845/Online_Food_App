@@ -29,12 +29,16 @@ public class FoodProductService {
 	
 	@Autowired
 	FoodMenuDao foodMenuDao;
+	
 
-	public ResponseEntity<ResponseStructure<FoodProduct>> saveFoodProduct(FoodProduct foodProduct)
-	{
+	public ResponseEntity<ResponseStructure<FoodProduct>> saveFoodProduct(FoodProduct foodProduct) {
+		
 		FoodProduct orders=foodProductDao.saveFoodProduct(foodProduct);
+		
 		if(orders!=null) {
+			
 		ResponseStructure<FoodProduct> responseStructure=new ResponseStructure<>();
+		
 		responseStructure.setStatus(HttpStatus.CREATED.value());
 		responseStructure.setMessage("Data Save Sucessfull");
 		responseStructure.setData(orders);
@@ -42,33 +46,43 @@ public class FoodProductService {
 		ResponseEntity<ResponseStructure<FoodProduct>> responseEntity=new ResponseEntity<ResponseStructure<FoodProduct>>(responseStructure, HttpStatus.CREATED);
 
 		return responseEntity;
-		}
-		else
+		
+		} else
+			
 			throw new NoSuchDataFoundException();
 	}
 	
+	
 	public ResponseEntity<ResponseStructure<FoodProduct>> findFoodProductByID(long id) {
+		
 		Optional<FoodProduct> foodProduct=foodProductDao.findFoodProductById(id);
-		if(foodProduct.isPresent())
-		{
+		
+		if(foodProduct.isPresent()) {
+			
 			ResponseStructure<FoodProduct> responseStructure=new ResponseStructure<>();
+			
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("Data Save Sucessfull");
 			responseStructure.setData(foodProduct.get());
 			
 			ResponseEntity<ResponseStructure<FoodProduct>> responseEntity=new ResponseEntity<ResponseStructure<FoodProduct>>(responseStructure, HttpStatus.OK);
+			
 			return responseEntity;
-		}
-		else
+			
+		} else
+			
 			throw new NoSuchDataFoundException();
 	}
 	
-	public ResponseEntity<ResponseStructure<List<FoodProduct>>> findAllFoodProduct()
-	{		
+	
+	public ResponseEntity<ResponseStructure<List<FoodProduct>>> findAllFoodProduct() {
+		
 		List<FoodProduct> foodProduct=foodProductDao.findFoodProduct();
-		if(foodProduct!=null)
-		{
+		
+		if(foodProduct!=null) {
+			
 		ResponseStructure<List<FoodProduct>> responseStructure=new ResponseStructure<>();
+		
 		responseStructure.setStatus(HttpStatus.OK.value());
 		responseStructure.setMessage("Data Save Sucessfull");
 		responseStructure.setData(foodProduct);
@@ -76,18 +90,23 @@ public class FoodProductService {
 		ResponseEntity<ResponseStructure<List<FoodProduct>>> responseEntity=new ResponseEntity<ResponseStructure<List<FoodProduct>>>(responseStructure, HttpStatus.OK);
 		
 		return responseEntity;
-		}
-		else
+		
+		} else
+			
 			throw new NoSuchDataFoundException();
 	}
 	
-	public ResponseEntity<ResponseStructure<String>> removeFoodProductById(long id)
-	{
+	
+	public ResponseEntity<ResponseStructure<String>> removeFoodProductById(long id) {
+		
 		Optional<FoodProduct> foodProduct=foodProductDao.findFoodProductById(id);
-		if(foodProduct.isPresent())
-		{
+		
+		if(foodProduct.isPresent()) {
+			
 			String str=foodProductDao.removeFoodProductById(id);
+			
 			ResponseStructure<String> responseStructure=new ResponseStructure<>();
+			
 			responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
 			responseStructure.setMessage("food Product removed Sucessfull");		
 			responseStructure.setData(str);
@@ -95,8 +114,9 @@ public class FoodProductService {
 			ResponseEntity<ResponseStructure<String>> responseEntity=new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.NO_CONTENT);
 
 			return responseEntity;
-		}
-		else 
+			
+		} else 
+			
 			throw new NoSuchDataFoundException();
 	}
 }

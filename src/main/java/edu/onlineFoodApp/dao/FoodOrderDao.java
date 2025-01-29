@@ -20,38 +20,38 @@ public class FoodOrderDao {
 
 		return foodOrderRepository.save(foodOrders);
 	}
+	
 
 	public Optional<FoodOrders> findFoodOrderById(long id) {
 		
 		Optional<FoodOrders> foodOrders = foodOrderRepository.findById(id);
 		
 		return foodOrders;
-		
 	}
+	
 	
 	public List<FoodOrders> findAllOrders() {
 		
 		return foodOrderRepository.findAll();
-		
 	}
+	
 	
 	public FoodOrders updateFoodOrders(FoodOrders foodOrders) {
 		
 		return foodOrderRepository.save(foodOrders);
-		
 	}
+	
 	
 	public String removeFoodOrderById(long id) {
 		
 		foodOrderRepository.deleteById(id);
 		
 		return "Order removed successfully";
-		
-	}
-
-	public List<FoodOrders> findAllFoodOrders() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
+
+	public List<FoodOrders> findAllFoodOrders() {
+		
+		return null;
+	}
 }

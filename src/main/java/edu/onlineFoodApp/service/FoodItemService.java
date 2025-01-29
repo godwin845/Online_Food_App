@@ -19,8 +19,9 @@ public class FoodItemService {
 	@Autowired
 	FoodItemDao foodItemDao;
 	
-	public ResponseEntity<ResponseStructure<FoodItems>> saveFoodItem(FoodItems foodItems,long id)
-	{	
+	
+	public ResponseEntity<ResponseStructure<FoodItems>> saveFoodItem(FoodItems foodItems,long id) {
+		
 		ResponseStructure<FoodItems> responseStructure=new ResponseStructure<>();
 		
 		responseStructure.setStatus(HttpStatus.CREATED.value());
@@ -28,13 +29,15 @@ public class FoodItemService {
 		responseStructure.setData(foodItemDao.saveFoodItem(foodItems));
 		
 		ResponseEntity<ResponseStructure<FoodItems>> responseEntity=new  ResponseEntity<ResponseStructure<FoodItems>>(responseStructure, HttpStatus.CREATED);
+		
 		return responseEntity;
 	}
 
 	
-	public ResponseEntity<ResponseStructure<FoodItems>> findFoodItemById(long foodItemId)
-	{
+	public ResponseEntity<ResponseStructure<FoodItems>> findFoodItemById(long foodItemId) {
+		
 		Optional<FoodItems> foodItems=foodItemDao.findFoodItemById(foodItemId);
+		
 		if(foodItems.isPresent()) {
 			
 		ResponseStructure<FoodItems> responseStructure=new ResponseStructure<>();
@@ -44,39 +47,41 @@ public class FoodItemService {
 		responseStructure.setData(foodItems.get());
 		
 		ResponseEntity<ResponseStructure<FoodItems>> responseEntity=new  ResponseEntity<ResponseStructure<FoodItems>>(responseStructure, HttpStatus.CREATED);
+		
 		return responseEntity;
-		}
-		else
+		
+		} else
+			
 			throw new FoodItemIdNotFoundException();
 	}
+	
 
-	public ResponseEntity<ResponseStructure<FoodItems>> findByName(String name)
-	{
+	public ResponseEntity<ResponseStructure<FoodItems>> findByName(String name) {
 				
-				if(Optional.ofNullable(foodItemDao.findByName(name)).isPresent())
-				{
-					ResponseStructure<FoodItems> responseStructure= new ResponseStructure<>();
-					responseStructure.setStatus(HttpStatus.OK.value());
-					responseStructure.setMessage("Retrived Sucessfully");
-					responseStructure.setData(foodItemDao.findByName(name));
-				
-					ResponseEntity<ResponseStructure<FoodItems>> entity=new ResponseEntity<ResponseStructure<FoodItems>>(responseStructure, HttpStatus.OK);
-					return entity;
-				}
-				else 
-					throw new FoodItemIdNotFoundException();
-				
+		if(Optional.ofNullable(foodItemDao.findByName(name)).isPresent()) {
+			
+			ResponseStructure<FoodItems> responseStructure= new ResponseStructure<>();
+			
+			responseStructure.setStatus(HttpStatus.OK.value());
+			responseStructure.setMessage("Retrived Sucessfully");
+			responseStructure.setData(foodItemDao.findByName(name));
+		
+			ResponseEntity<ResponseStructure<FoodItems>> entity=new ResponseEntity<ResponseStructure<FoodItems>>(responseStructure, HttpStatus.OK);
+			
+			return entity;
+			
+		} else
+			
+			throw new FoodItemIdNotFoundException();	
 	}
 	
-	
-	
-	
-	
-	public ResponseEntity<ResponseStructure<String>> deleteFoodItem(long foodItemId)
-	{
+
+	public ResponseEntity<ResponseStructure<String>> deleteFoodItem(long foodItemId) {
+		
 		Optional<FoodItems> optional=foodItemDao.findFoodItemById(foodItemId);
-		if(optional.isPresent())
-		{	
+		
+		if(optional.isPresent()) {
+			
 		ResponseStructure<String> responseStructure=new ResponseStructure<>();
 		
 		responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
@@ -84,9 +89,11 @@ public class FoodItemService {
 		responseStructure.setData(foodItemDao.deleteFoodItem(foodItemId));
 		
 		ResponseEntity<ResponseStructure<String>> responseEntity=new  ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.NO_CONTENT);
+		
 		return responseEntity;
-		}
-		else 
+		
+		} else
+			
 			throw new FoodItemIdNotFoundException();
 	}
 }

@@ -31,8 +31,8 @@ public class CustomerService {
 		ResponseEntity<ResponseStructure<Customer>> entity = new ResponseEntity<ResponseStructure<Customer>>(responseStructure, HttpStatus.CREATED);
 		
 		return entity;
-				
 	}
+	
 	
 	public ResponseEntity<ResponseStructure<Customer>> findCustomerById(long customerId) {
 		
@@ -49,13 +49,12 @@ public class CustomerService {
 			ResponseEntity<ResponseStructure<Customer>> entity = new ResponseEntity<ResponseStructure<Customer>>(responseStructure, HttpStatus.CREATED);
 			
 			return entity;
-			
-			
+				
 		} else
 			
 			throw new CustomerIdNotPresentException();
-	
 	}
+	
 	
 	public ResponseEntity<ResponseStructure<Customer>> findCustomerByPhoneNumber1(long customerPhoneNumber) {
 		
@@ -64,6 +63,7 @@ public class CustomerService {
 		if (optional.isPresent()) {
 			
 			ResponseStructure<Customer> responseStructure = new ResponseStructure<>();
+			
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("Customer details are founded successfully");
 			responseStructure.setData(optional.get());
@@ -72,11 +72,9 @@ public class CustomerService {
 			
 			return entity;
 			
-			
 		} else {
 			
 			throw new CustomerIdNotPresentException();
-
 		}
 	}
 		
@@ -90,6 +88,7 @@ public class CustomerService {
 				List<Customer> list = customerDao.findAllCustomer().get();
 				
 				ResponseStructure<List<Customer>> responseStructure = new ResponseStructure<>();
+				
 				responseStructure.setStatus(HttpStatus.OK.value());
 				responseStructure.setMessage("Customer details are retrieved successfully");
 				responseStructure.setData(list);
@@ -98,67 +97,62 @@ public class CustomerService {
 				
 				return entity;
 				
-				
 			} else {
 				
 				throw new CustomerIdNotPresentException();
-
 			}
 		}
 			
 			
-			public ResponseEntity<ResponseStructure<Customer>> UpdateCustomer(long customerId, Customer customer) {
+		public ResponseEntity<ResponseStructure<Customer>> UpdateCustomer(long customerId, Customer customer) {
 				
-				Optional<Customer> optionalCustomer = customerDao.findCustomerById(customerId);
+			Optional<Customer> optionalCustomer = customerDao.findCustomerById(customerId);
+			
+			if (optionalCustomer.isPresent()) {
 				
-				if (optionalCustomer.isPresent()) {
-					
-					customer.getId();
-					
-					Customer customerUpdate = customerDao.saveCustomer(customer);
-					
-					ResponseStructure<Customer> responseStructure = new ResponseStructure<>();
-					responseStructure.setStatus(HttpStatus.OK.value());
-					responseStructure.setMessage("Customer details update");
-					responseStructure.setData(customerUpdate);
-					
-					ResponseEntity<ResponseStructure<Customer>> entity = new ResponseEntity<ResponseStructure<Customer>>(responseStructure, HttpStatus.OK);
-					
-					return entity;
-					
-					
-				} else {
-					
-					throw new CustomerIdNotPresentException();
-
-				}
+				customer.getId();
+				
+				Customer customerUpdate = customerDao.saveCustomer(customer);
+				
+				ResponseStructure<Customer> responseStructure = new ResponseStructure<>();
+				
+				responseStructure.setStatus(HttpStatus.OK.value());
+				responseStructure.setMessage("Customer details update");
+				responseStructure.setData(customerUpdate);
+				
+				ResponseEntity<ResponseStructure<Customer>> entity = new ResponseEntity<ResponseStructure<Customer>>(responseStructure, HttpStatus.OK);
+				
+				return entity;
+				
+			} else {
+				
+				throw new CustomerIdNotPresentException();
 			}
+		}
 				
 		
-				public ResponseEntity<ResponseStructure<Customer>> removeCustomer(long customerId) {
+		public ResponseEntity<ResponseStructure<Customer>> removeCustomer(long customerId) {
 					
-					Optional<Customer> CustomerOptional = customerDao.findCustomerById(customerId);
-					
-					if (CustomerOptional.isPresent()) {
-						
-						String removeCustomer = customerDao.removeCustomer(customerId);
-						
-						ResponseStructure<String> responseStructure = new ResponseStructure<>();
-						responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
-						responseStructure.setMessage("Customer details are founded successfully");
-						responseStructure.setData(removeCustomer);
-						
-						ResponseEntity<ResponseStructure<Customer>> entity = new ResponseEntity<ResponseStructure<Customer>>(HttpStatus.NO_CONTENT);
-						
-						return entity;
-						
-						
-					} else {
-						
-						throw new CustomerIdNotPresentException();
-
-					}
-		
+			Optional<Customer> CustomerOptional = customerDao.findCustomerById(customerId);
+			
+			if (CustomerOptional.isPresent()) {
+				
+				String removeCustomer = customerDao.removeCustomer(customerId);
+				
+				ResponseStructure<String> responseStructure = new ResponseStructure<>();
+				
+				responseStructure.setStatus(HttpStatus.NO_CONTENT.value());
+				responseStructure.setMessage("Customer details are founded successfully");
+				responseStructure.setData(removeCustomer);
+				
+				ResponseEntity<ResponseStructure<Customer>> entity = new ResponseEntity<ResponseStructure<Customer>>(HttpStatus.NO_CONTENT);
+				
+				return entity;
+				
+			} else {
+				
+				throw new CustomerIdNotPresentException();
+			}
 	}
 
 }

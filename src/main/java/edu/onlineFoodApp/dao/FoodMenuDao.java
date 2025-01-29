@@ -15,40 +15,39 @@ public class FoodMenuDao {
 	@Autowired
 	FoodMenuRepository foodMenuRepository;
 	
+	
 	public FoodMenu saveFoodMenu(FoodMenu foodMenu) {
 		
 		return foodMenuRepository.save(foodMenu);
-		
 	}
+	
 	
 	public Optional<FoodMenu> findFoodMenuById(long foodMenuId) {
 		
 		Optional<FoodMenu> opt = foodMenuRepository.findById(foodMenuId);
 		
 		return opt;
-		
 	}
+	
 	
 	public List<FoodMenu> findAllFoodMenu() {
 		
 		return foodMenuRepository.findAll();
-		
 	}
+	
 	
 	public String removeFoodMenuById(long foodMenuById) {
 		
 		foodMenuRepository.deleteById(foodMenuById);
 		
-		return "Data removed successfully";
-		
+		return "Data removed successfully";	
 	}
+	
 	
 	public FoodMenu updateFoodMenu(FoodMenu foodMenu) {
 		
 		FoodMenu menu = foodMenuRepository.save(foodMenu);
 		
 		return menu;
-		
 	}
-
 }

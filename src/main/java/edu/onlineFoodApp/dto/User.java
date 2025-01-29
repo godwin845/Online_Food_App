@@ -47,5 +47,4 @@ public class User {
 	
 	@OneToMany
 	private List<FoodOrders> foodOrders;
-
 }

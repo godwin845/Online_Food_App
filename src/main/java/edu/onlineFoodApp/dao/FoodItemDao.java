@@ -18,36 +18,35 @@ public class FoodItemDao {
 	public FoodItems saveFoodItem(FoodItems foodItems) {
 		
 		return foodItemRepository.save(foodItems);
-		
 	}
+	
 	
 	public Optional<FoodItems> findFoodItemById(long foodItemId) {
 		
 		Optional<FoodItems> foodItems = foodItemRepository.findById(foodItemId);
 		
 		return foodItems;
-		
 	}
+	
 	
 	public FoodItems findByName(String name) {
 		
 		FoodItems foodItems = foodItemRepository.findByName(name);
 		
 		return foodItems;
-		
 	}
+	
 	
 	public String deleteFoodItem(long foodItemId) {
 		
 		foodItemRepository.deleteById(foodItemId);
 		
 		return "Food item deleted successfully";
-		
 	}
+	
 
 	public Optional<FoodItems> findCustomerById(long foodItemId) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
-
 }

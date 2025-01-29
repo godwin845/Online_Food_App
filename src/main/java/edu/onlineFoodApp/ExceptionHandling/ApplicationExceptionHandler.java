@@ -28,6 +28,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler{
 	public ResponseEntity<ResponseStructure<String>> dataNotFound(NoSuchDataFoundException noSuchDataFoundException) {
 		
 		ResponseStructure<String> responseStructure = new ResponseStructure<>();
+		
 		responseStructure.setStatus(HttpStatus.OK.value());
 		responseStructure.setMessage("No such data found in the database");
 		responseStructure.setData(noSuchDataFoundException.getMessage());
@@ -35,7 +36,6 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler{
 		ResponseEntity<ResponseStructure<String>> responseEntity = new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.OK);
 		
 		return responseEntity;
-		
 	}
 	
 	@ExceptionHandler(UserDataNotFoundInTheDatabase.class)

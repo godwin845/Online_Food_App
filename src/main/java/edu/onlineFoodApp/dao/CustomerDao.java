@@ -19,7 +19,6 @@ public class CustomerDao {
 	public Customer saveCustomer(Customer customer) {
 		
 		return customerRepository.save(customer);
-		
 	}
 	
 
@@ -27,41 +26,36 @@ public class CustomerDao {
 		
 		Optional<Customer> cusOptional = customerRepository.findById(customerId);
 		
-		return cusOptional;
-		
+		return cusOptional;	
 	}
+	
 	
 	public Optional<Customer> findCustomerByPhoneNumber(long customerPhoneNumber) {
 		
 		Customer customer = customerRepository.findByPhoneNumber(customerPhoneNumber);
 		
 		return Optional.ofNullable(customer);
-		 
 	}
+	
 	
 	public Optional<List<Customer>> findAllCustomer() {
 		
 		List<Customer> customers = customerRepository.findAll();
 		
-		return Optional.ofNullable(customers);
-				
-		
+		return Optional.ofNullable(customers);	
 	}
 	
 		
 	public Customer updateCustomer(Customer customer) {
 		
 		return customerRepository.save(customer);
-		
 	}
+	
 	
 	public String removeCustomer(long customerId) {
 		
 		customerRepository.deleteById(customerId);
 		
 		return "Customer detail removed successfully";
-		
 	}
-	
-	
 }

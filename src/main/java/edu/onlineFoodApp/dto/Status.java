@@ -6,5 +6,4 @@ public enum Status {
 	PREPARING,
 	READYTOSERVE,
 	DELIVERED;
-
 }
