@@ -5,9 +5,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import edu.onlineFoodApp.dto.FoodOrders;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 public class ResponseStructure<T> {
 	
